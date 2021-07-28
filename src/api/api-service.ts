@@ -12,7 +12,7 @@ const apiService = {
     const result = await axiosInstance.get<FeatureFlag[]>(endpoint)
     return result.data
   },
-  getFeatureFlagRules: async (id : number) => {
+  getFeatureFlagRules: async (id : string) => {
     const endpoint = `featureflags/${id}/featurerules`
     const result = await axiosInstance.get<Array<FeatureRuleDefault | FeatureRuleOnetime | FeatureRuleWhitelist>>(endpoint)
     return result.data
