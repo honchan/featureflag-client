@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-import { FeatureFlagList } from './featueflaglist/featureflag-list.component'
+import { FeatureFlagMenu } from './featureflag-menu/featureflag-menu.component'
 
 function App(){
   return (
-    <FeatureFlagList />
+    <FeatureFlagMenu />
   )
 }
 

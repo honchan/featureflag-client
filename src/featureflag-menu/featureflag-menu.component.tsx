@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-import { FeatureFlag } from './api/api-types'
-import { apiService } from './api/api-service'
+import { FeatureFlag } from '../api/api-types'
+import { apiService } from '../api/api-service'
 import { Menu } from 'antd';
 
-const FeatureFlagList = () : JSX.Element => {
+const FeatureFlagMenu = () : JSX.Element => {
   const [featureFlags, setFeatureFlags] = React.useState<FeatureFlag[]>([])
   const [selectedFlag, setSelectedFlag] = React.useState<string>('')
 
@@ -37,4 +37,4 @@ const FeatureFlagList = () : JSX.Element => {
 
 }
 
-export { FeatureFlagList }
+export { FeatureFlagMenu }
