@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
+import { FeatureFlagList } from './featueflaglist/featureflag-list.component'
+
 function App(){
   return (
-    <div className="App">
-      Hello World
-    </div>
+    <FeatureFlagList />
   )
 }
 
