@@ -5,19 +5,19 @@ export type FeatureFlag = {
 }
 
 export type FeatureRuleDefault = {
-  type: string,
+  type: 'DEFAULT',
   enabled: boolean,
 }
 
 export type FeatureRuleWhitelist = {
-  type: string,
+  type: 'WHITELIST',
   enabled: boolean,
   onList: string[]
   offList: string[]
 }
 
 export type FeatureRuleOnetime = {
-  type: string,
+  type: 'ONETIME',
   enabled: boolean,
   blocked: []
 }
