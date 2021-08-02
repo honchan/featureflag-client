@@ -1,0 +1,16 @@
+.container {
+  margin: 20px 20px;
+  width: 100%;
+}
+
+.collapse_group {
+  max-width: 900px;
+}
+
+.panelEnabled {
+  background-color: pink;
+}
+
+.panelDisabled {
+  background-color: aquamarine;
+}
