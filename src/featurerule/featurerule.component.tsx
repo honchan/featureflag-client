@@ -34,7 +34,7 @@ const FeatureRule = ({ activeFlag } : Props) : JSX.Element => {
 
   return (
     <div className={classes.container}>
-      <Collapse className={classes.collapse_group}>
+      <Collapse className={classes.collapse_group} defaultActiveKey="1">
         <Panel key="1" header="Default Feature Rule" className={featureRuleDefault?.enabled ? classes.panelEnabled : classes.panelDisabled }>
           <DefaultFeatureRule featureRule={featureRuleDefault} />
         </Panel>
