@@ -1,0 +1,8 @@
+.status_text {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.status_container {
+  display: flex;
+}

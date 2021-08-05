@@ -16,6 +16,11 @@ const apiService = {
     const endpoint = `featureflags/${id}/featurerules`
     const result = await axiosInstance.get<Array<FeatureRuleDefault | FeatureRuleOnetime | FeatureRuleWhitelist>>(endpoint)
     return result.data
+  },
+  updateDefaultFeatureRule: async(id: string, enabled: boolean) => {
+    const endpoint = `featureflags/${id}/default`
+    const result = await axiosInstance.put(endpoint, { enabled })
+    return result.data
   }
 }
 

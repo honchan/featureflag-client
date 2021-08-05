@@ -21,7 +21,7 @@ const FeatureRule = ({ activeFlag } : Props) : JSX.Element => {
 
   React.useEffect(() => {
     if (activeFlag == null) return
-
+  
     const fetchFeatureRules = async () => {
       const result = await apiService.getFeatureFlagRules(activeFlag)
       setFeatureRuleDefault(result.find(featureRule => featureRule.type === 'DEFAULT') as FeatureRuleDefault)
@@ -36,7 +36,7 @@ const FeatureRule = ({ activeFlag } : Props) : JSX.Element => {
     <div className={classes.container}>
       <Collapse className={classes.collapse_group} defaultActiveKey="1">
         <Panel key="1" header="Default Feature Rule" className={featureRuleDefault?.enabled ? classes.panelEnabled : classes.panelDisabled }>
-          <DefaultFeatureRule featureRule={featureRuleDefault} />
+          <DefaultFeatureRule featureRule={featureRuleDefault} featureFlagId={activeFlag || ''} />
         </Panel>
         <Panel key="2" header="Whitelist Feature Rule" className={featureRuleWhitelist?.enabled ? classes.panelEnabled : classes.panelDisabled }>
           <WhitelistFeatureRule featureRule={featureRuleWhitelist} />
