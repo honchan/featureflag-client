@@ -4,6 +4,7 @@ import {  Switch  } from 'antd'
 import classes from './default-featurerule.component.module.css'
 import { FeatureRuleDefault } from '../../api/api-types'
 import { apiService } from '../../api/api-service'
+import { useMutateDefault } from '../../querys/useMutateDefault'
 
 type Props = {
   featureRule: FeatureRuleDefault | null
@@ -11,15 +12,13 @@ type Props = {
 }
 
 const DefaultFeatureRule = ({ featureRule, featureFlagId } : Props) : JSX.Element => {
-  const handleChange = async (value: boolean) : Promise<void> => {
-    await apiService.updateDefaultFeatureRule(featureFlagId, value)
-  }
+  const { mutate } = useMutateDefault({ flagId: featureFlagId })
 
   return (
     <>
       <div className={classes.status_container}>
         <span className={classes.status_text}>Enabled</span>
-        <Switch checked={featureRule?.enabled} onChange={handleChange} />
+        <Switch checked={featureRule?.enabled} onChange={value => mutate(value)} />
       </div>
     </>
   )

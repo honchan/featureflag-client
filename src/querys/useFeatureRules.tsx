@@ -13,6 +13,7 @@ type QueryResult = {
   whitelist: FeatureRuleWhitelist
 }
 
+const FEATURERULES_KEY = 'featurerules'
 
 const useFeatureRules = ({ flagId } : Props) => {
   const fetchFeatureRules = async (flagId: string | null) : Promise<QueryResult | null> => {
@@ -30,7 +31,7 @@ const useFeatureRules = ({ flagId } : Props) => {
     }
   }
 
-  return useQuery(['featurerules', flagId], () => fetchFeatureRules(flagId))
+  return useQuery([FEATURERULES_KEY, flagId], () => fetchFeatureRules(flagId))
 }
 
-export { useFeatureRules }
+export { useFeatureRules, FEATURERULES_KEY }
