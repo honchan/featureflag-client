@@ -21,3 +21,9 @@ export type FeatureRuleOnetime = {
   enabled: boolean,
   blocked: []
 }
+
+export type FeatureRuleWhitelistPayload = {
+  enabled: boolean,
+  onList: string[]
+  offList: string[]
+} 
