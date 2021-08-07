@@ -1,6 +1,6 @@
 import axios, { ResponseType } from 'axios'
 
-import { FeatureFlag, FeatureRuleDefault, FeatureRuleOnetime, FeatureRuleWhitelist } from './api-types'
+import { FeatureFlag, FeatureRuleDefault, FeatureRuleOnetime, FeatureRuleWhitelist, FeatureRuleWhitelistPayload } from './api-types'
 
 const SERVER_URL = 'http://localhost:3000/'
 
@@ -20,6 +20,11 @@ const apiService = {
   updateDefaultFeatureRule: async(id: string, enabled: boolean) => {
     const endpoint = `featureflags/${id}/default`
     const result = await axiosInstance.put(endpoint, { enabled })
+    return result.data
+  }, 
+  updateWhitelistFeatureRule: async(id: string, payload: FeatureRuleWhitelistPayload) => {
+    const endpoint = `featureflags/${id}/whitelist`
+    const result = await axiosInstance.put(endpoint, payload)
     return result.data
   }
 }
