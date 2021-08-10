@@ -26,7 +26,12 @@ const apiService = {
     const endpoint = `featureflags/${id}/whitelist`
     const result = await axiosInstance.put(endpoint, payload)
     return result.data
-  }
+  },
+  updateOnetimeFeatureRule: async(id: string, enabled: boolean) => {
+    const endpoint = `featureflags/${id}/onetime`
+    const result = await axiosInstance.put(endpoint, { enabled })
+    return result.data
+  }, 
 }
 
 export { apiService }

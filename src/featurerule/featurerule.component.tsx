@@ -6,7 +6,7 @@ import { apiService } from '../api/api-service'
 import { FeatureRuleDefault, FeatureRuleOnetime, FeatureRuleWhitelist} from '../api/api-types'
 import { DefaultFeatureRule } from './default-featurerule/default-featurerule.component'
 import { WhitelistFeatureRule } from './whitelist-featurerule/whitelist-featurerule.component'
-import { OnetimeFeatureRule } from './onetime-featurerule/featurerule.onetime.component'
+import { OnetimeFeatureRule } from './onetime-featurerule/onetime-featurerule.component'
 import { useFeatureRules } from '../querys/useFeatureRules'
 
 type Props = {
@@ -28,7 +28,7 @@ const FeatureRule = ({ activeFlag } : Props) : JSX.Element => {
           <WhitelistFeatureRule featureRule={data?.whitelist || null} featureFlagId={activeFlag || ''} />
         </Panel>
         <Panel key="3" header="Onetime Feature Rule" className={data?.onetime?.enabled ? classes.panelEnabled : classes.panelDisabled }>
-          <OnetimeFeatureRule featureRule={data?.onetime || null} />
+          <OnetimeFeatureRule featureRule={data?.onetime || null} featureFlagId={activeFlag || ''} />
         </Panel>
       </Collapse>
     </div>
