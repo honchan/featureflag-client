@@ -1,0 +1,19 @@
+.status_text {
+  font-weight: bold;
+  min-width: 100px;
+}
+
+.status_container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tag_label {
+  min-width: 100px;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.tag_container {
+  display: flex;
+}
