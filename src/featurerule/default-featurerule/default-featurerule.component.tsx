@@ -3,7 +3,6 @@ import {  Switch  } from 'antd'
 
 import classes from './default-featurerule.component.module.css'
 import { FeatureRuleDefault } from '../../api/api-types'
-import { apiService } from '../../api/api-service'
 import { useMutateDefault } from '../../querys/useMutateDefault'
 
 type Props = {
