@@ -25,7 +25,7 @@ const FeatureRule = ({ activeFlag } : Props) : JSX.Element => {
           <DefaultFeatureRule featureRule={data?.default || null} featureFlagId={activeFlag || ''} />
         </Panel>
         <Panel key="2" header="Whitelist Feature Rule" className={data?.whitelist?.enabled ? classes.panelEnabled : classes.panelDisabled }>
-          <WhitelistFeatureRule featureRule={data?.whitelist || null} />
+          <WhitelistFeatureRule featureRule={data?.whitelist || null} featureFlagId={activeFlag || ''} />
         </Panel>
         <Panel key="3" header="Onetime Feature Rule" className={data?.onetime?.enabled ? classes.panelEnabled : classes.panelDisabled }>
           <OnetimeFeatureRule featureRule={data?.onetime || null} />
