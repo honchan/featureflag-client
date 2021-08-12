@@ -1,33 +1,23 @@
 import * as React from 'react'
-
-import { FeatureFlag } from '../api/api-types'
-import { apiService } from '../api/api-service'
 import { Menu } from 'antd';
-import { SelectEventHandler, SelectInfo } from 'rc-menu/lib/interface';
+import { SelectInfo } from 'rc-menu/lib/interface';
 
+import { useFeatureFlags } from '../querys/useFeatureFlags'
+import { CreateFeatureflagForm } from './create-featureflag-form/create-featureflag-form.component'
 
 type Props = {
   setActiveFlag:  React.Dispatch<React.SetStateAction<string | null>>
 }
 
 const FeatureFlagMenu = ({ setActiveFlag } : Props) : JSX.Element => {
-  const [featureFlags, setFeatureFlags] = React.useState<FeatureFlag[]>([])
   const [selectedFlag, setSelectedFlag] = React.useState<string>('')
+  const { data = []} = useFeatureFlags()
 
   React.useEffect(() => {
-    const fetchFeatureFlags = async () : Promise<void> => {
-      try {
-        const result = await apiService.getFeatureFlags()
-        setFeatureFlags(result)
-        setSelectedFlag(`${result[0].id}`)
-        setActiveFlag(`${result[0].id}`)
-      } catch (error) {
-        console.log(error)
-      }
+    if (data.length > 0) {
+      setActiveFlag(`${data[0].id}`)
     }
-
-    fetchFeatureFlags()
-  }, [])
+  }, [data])
 
   const handleOnSelect = (info : SelectInfo) => {
     setSelectedFlag(info.key)
@@ -37,11 +27,12 @@ const FeatureFlagMenu = ({ setActiveFlag } : Props) : JSX.Element => {
   return (
     <Menu
       onClick={() => {}}
-      style={{ width: 256, height: '100vh' }}
+      style={{ width: 400, height: '100vh' }}
       selectedKeys={[selectedFlag]}
       onSelect={handleOnSelect}
     >
-      {featureFlags.map(flag => (
+      <CreateFeatureflagForm />
+      {data.map(flag => (
         <Menu.Item key={flag.id}>{flag.name}</Menu.Item>
       ))}
     </Menu> 
