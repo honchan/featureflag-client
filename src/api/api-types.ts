@@ -27,3 +27,9 @@ export type FeatureRuleWhitelistPayload = {
   onList: string[]
   offList: string[]
 } 
+
+export type CreateFeatureflagPayload = {
+  id: number,
+  flagname: string,
+  description: string
+}
