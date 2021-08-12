@@ -8,9 +8,9 @@
 }
 
 .panelEnabled {
-  background-color: palegreen;
+  background-color: #e6f7ff;
 }
 
 .panelDisabled {
-  background-color: pink;
+  background-color: ghostwhite;
 }
