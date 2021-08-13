@@ -9,7 +9,7 @@ import { WhitelistFeatureRule } from './whitelist-featurerule/whitelist-featurer
 import { OnetimeFeatureRule } from './onetime-featurerule/onetime-featurerule.component'
 import { useFeatureRules } from '../querys/useFeatureRules'
 import { useFeatureFlags } from '../querys/useFeatureFlags'
-
+import { DeleteFeatureflagForm } from './delete-featureflag-form/delete-featureflag-form.component';
 
 type Props = {
   activeFlag: string
@@ -27,22 +27,28 @@ const FeatureFlagComponent = ({ activeFlag } : Props) : JSX.Element => {
 
   const flag = filterForActiveFlag(flags, parseInt(activeFlag))
 
-
   return (
     <div className={classes.container}>
-      <h1>{flag?.name}</h1>
-      <p>{flag?.description}</p>
-      <Collapse className={classes.collapse_group} defaultActiveKey="1">
-        <Panel key="1" header="Default Feature Rule" className={data?.default?.enabled ? classes.panelEnabled : classes.panelDisabled }>
-          <DefaultFeatureRule featureRule={data?.default || null} featureFlagId={activeFlag || ''} />
-        </Panel>
-        <Panel key="2" header="Whitelist Feature Rule" className={data?.whitelist?.enabled ? classes.panelEnabled : classes.panelDisabled }>
-          <WhitelistFeatureRule featureRule={data?.whitelist || null} featureFlagId={activeFlag || ''} />
-        </Panel>
-        <Panel key="3" header="Onetime Feature Rule" className={data?.onetime?.enabled ? classes.panelEnabled : classes.panelDisabled }>
-          <OnetimeFeatureRule featureRule={data?.onetime || null} featureFlagId={activeFlag || ''} />
-        </Panel>
-      </Collapse>
+      {flag
+        ? <>
+            <h1>{flag?.name}</h1>
+            <p>{flag?.description}</p>
+            <DeleteFeatureflagForm selectedFlag={flag.name} flagId={flag.id}/>
+            <Collapse className={classes.collapse_group} defaultActiveKey="1">
+              <Panel key="1" header="Default Feature Rule" className={data?.default?.enabled ? classes.panelEnabled : classes.panelDisabled }>
+                <DefaultFeatureRule featureRule={data?.default || null} featureFlagId={activeFlag || ''} />
+              </Panel>
+              <Panel key="2" header="Whitelist Feature Rule" className={data?.whitelist?.enabled ? classes.panelEnabled : classes.panelDisabled }>
+                <WhitelistFeatureRule featureRule={data?.whitelist || null} featureFlagId={activeFlag || ''} />
+              </Panel>
+              <Panel key="3" header="Onetime Feature Rule" className={data?.onetime?.enabled ? classes.panelEnabled : classes.panelDisabled }>
+                <OnetimeFeatureRule featureRule={data?.onetime || null} featureFlagId={activeFlag || ''} />
+              </Panel>
+            </Collapse>
+          </>
+        : <h2>No flag selected</h2>
+      }
+      
     </div>
   )
 }
