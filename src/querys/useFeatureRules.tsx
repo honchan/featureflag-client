@@ -17,7 +17,7 @@ const FEATURERULES_KEY = 'featurerules'
 
 const useFeatureRules = ({ flagId } : Props) => {
   const fetchFeatureRules = async (flagId: string | null) : Promise<QueryResult | null> => {
-    if (flagId == null) return null
+    if (!flagId) return null
 
     const result = await apiService.getFeatureFlagRules(flagId)
     const featureRuleDefault = result.find(featureRule => featureRule.type === 'DEFAULT') as FeatureRuleDefault
