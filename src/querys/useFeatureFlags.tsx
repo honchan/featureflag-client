@@ -5,7 +5,6 @@ import { FeatureFlag } from '../api/api-types'
 
 const FEATUREFLAGS_KEY = 'featureflags'
 
-
 const useFeatureFlags = () => {
   const fetchFeatureFlags = async () : Promise<FeatureFlag[]> => {
     const result = await apiService.getFeatureFlags()
@@ -15,4 +14,4 @@ const useFeatureFlags = () => {
   return useQuery(FEATUREFLAGS_KEY, () => fetchFeatureFlags())
 }
 
-export { useFeatureFlags }
+export { useFeatureFlags, FEATUREFLAGS_KEY }
