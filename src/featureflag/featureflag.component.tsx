@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Collapse } from 'antd';
 
-import classes from './featurerule.component.module.css'
+import classes from './featureflag.component.module.css'
 import { apiService } from '../api/api-service'
 import { FeatureFlag, FeatureRuleDefault, FeatureRuleOnetime, FeatureRuleWhitelist} from '../api/api-types'
 import { DefaultFeatureRule } from './default-featurerule/default-featurerule.component'
@@ -17,7 +17,7 @@ type Props = {
 
 const { Panel } = Collapse
 
-const FeatureRule = ({ activeFlag } : Props) : JSX.Element => {
+const FeatureFlagComponent = ({ activeFlag } : Props) : JSX.Element => {
   const { data  } = useFeatureRules({ flagId: activeFlag });
   const { data: flags = [] } = useFeatureFlags()
 
@@ -47,4 +47,4 @@ const FeatureRule = ({ activeFlag } : Props) : JSX.Element => {
   )
 }
 
-export { FeatureRule }
+export { FeatureFlagComponent }
