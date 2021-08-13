@@ -6,7 +6,7 @@ import { useFeatureFlags } from '../querys/useFeatureFlags'
 import { CreateFeatureflagForm } from './create-featureflag-form/create-featureflag-form.component'
 
 type Props = {
-  setActiveFlag:  React.Dispatch<React.SetStateAction<string | null>>
+  setActiveFlag:  React.Dispatch<React.SetStateAction<string>>
 }
 
 const FeatureFlagMenu = ({ setActiveFlag } : Props) : JSX.Element => {
