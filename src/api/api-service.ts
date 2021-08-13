@@ -36,7 +36,12 @@ const apiService = {
     const endpoint = `featureflags/${id}/onetime`
     const result = await axiosInstance.put(endpoint, { enabled })
     return result.data
-  }, 
+  },
+  deleteFeatureflag: async(id: number) => {
+    const endpoint = `featureflags/${id}`
+    const result = await axiosInstance.delete(endpoint)
+    return result.data
+  }
 }
 
 export { apiService }
