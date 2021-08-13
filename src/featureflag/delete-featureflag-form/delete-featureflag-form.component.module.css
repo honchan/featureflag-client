@@ -1,0 +1,18 @@
+.container {
+  margin-bottom: 20px;
+}
+
+.confirm_delete_message {
+  margin-bottom: 5px;
+}
+
+.confirm_delete_input {
+  max-width: 300px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.confirm_delete_button {
+  margin-right: 5px;
+}
