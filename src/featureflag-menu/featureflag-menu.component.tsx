@@ -14,8 +14,9 @@ const FeatureFlagMenu = ({ setActiveFlag } : Props) : JSX.Element => {
   const { data = []} = useFeatureFlags()
 
   React.useEffect(() => {
-    if (data.length > 0) {
+    if (!selectedFlag && data.length > 0) {
       setActiveFlag(`${data[0].id}`)
+      setSelectedFlag(`${data[0].id}`)
     }
   }, [data])
 
@@ -31,7 +32,7 @@ const FeatureFlagMenu = ({ setActiveFlag } : Props) : JSX.Element => {
       selectedKeys={[selectedFlag]}
       onSelect={handleOnSelect}
     >
-      <CreateFeatureflagForm />
+      <CreateFeatureflagForm setActiveFlag={setActiveFlag}/>
       {data.map(flag => (
         <Menu.Item key={flag.id}>{flag.name}</Menu.Item>
       ))}
