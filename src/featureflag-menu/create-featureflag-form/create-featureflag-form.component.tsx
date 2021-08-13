@@ -6,7 +6,11 @@ import classes from './create-featureflag-form.component.module.css'
 
 const { Panel } = Collapse
 
-const CreateFeatureflagForm = () : JSX.Element => {
+type Props = {
+  setActiveFlag:  React.Dispatch<React.SetStateAction<string>>
+}
+
+const CreateFeatureflagForm = ({ setActiveFlag }: Props) : JSX.Element => {
   const [flagname, setFlagname] = React.useState<string>('')
   const [description, setDescription] = React.useState<string>('')
 
@@ -15,7 +19,7 @@ const CreateFeatureflagForm = () : JSX.Element => {
     setDescription('')
   }
 
-  const { mutate, isLoading } = useMutateCreateFeatureflag({ onComplete })
+  const { mutate, isLoading } = useMutateCreateFeatureflag({ onComplete, setActiveFlag })
 
   const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name
