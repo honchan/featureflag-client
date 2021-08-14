@@ -29,8 +29,12 @@ const apiService = {
   }, 
   updateWhitelistFeatureRule: async(id: string, payload: FeatureRuleWhitelistPayload) => {
     const endpoint = `featureflags/${id}/whitelist`
-    const result = await axiosInstance.put(endpoint, payload)
-    return result.data
+    try {
+      const result = await axiosInstance.put(endpoint, payload)
+      return result.data
+    } catch (error) {
+      throw error
+    }
   },
   updateOnetimeFeatureRule: async(id: string, enabled: boolean) => {
     const endpoint = `featureflags/${id}/onetime`

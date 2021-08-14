@@ -18,6 +18,9 @@ const useMutateWhitelist = ({ flagId } : Props) => {
     onSuccess: () => {
       queryClient.invalidateQueries([FEATURERULES_KEY, flagId])
     },  
+    onError: (error) => {
+      alert(error.response.data.message)
+    }
   })
 }
 
